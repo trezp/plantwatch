@@ -19,10 +19,13 @@ db
   });
 
 app.get('/api/plants', (req,res) => {
-  res.json({
-    plants: ["plants plants plants"]
-  
-  });
+  Plant.findAll().then(plants => {
+    console.log(plants)
+    res.send(plants)
+    // res.json({
+    //   plants: "I got plants"
+    // });
+  })
 });
 
 const Plant = db.define('plant', {
@@ -43,9 +46,7 @@ const Plant = db.define('plant', {
 //   });
 // });
 
-Plant.findAll().then(plants => {
-  console.log(plants)
-})
+
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console

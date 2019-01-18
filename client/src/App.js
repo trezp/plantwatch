@@ -13,19 +13,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      plants: ""
+      plants: []
     }
   }
 
   componentDidMount(){
-    get().then(result => this.setState({plants: result.plants}));
+    get().then(result => this.setState({plants: result}));
   }
 
   render() {
     return (
-      <p>
-        {this.state.plants}
-      </p>
+      <ul>
+        {this.state.plants.map(plant => <li>{plant.plantName}</li>)}
+      </ul>
     );
   }
 }
