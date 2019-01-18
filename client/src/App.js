@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 function get() {
-  return fetch(`/something`, {
+  return fetch(`/api/plants`, {
     accept: "application/json"
   })
   .then(response => response.json())
@@ -13,18 +13,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: ""
+      plants: ""
     }
   }
 
   componentDidMount(){
-    get().then(result => this.setState({message: result.message}));
+    get().then(result => this.setState({plants: result.plants}));
   }
 
   render() {
     return (
       <p>
-        {this.state.message}
+        {this.state.plants}
       </p>
     );
   }
