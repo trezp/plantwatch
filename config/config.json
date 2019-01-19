@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": null,
+    "password": null,
+    "database": "plantwatch",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+   }
+}

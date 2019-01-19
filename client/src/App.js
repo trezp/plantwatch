@@ -24,7 +24,13 @@ class App extends Component {
   render() {
     return (
       <ul>
-        {this.state.plants.map(plant => <li>{plant.plantName}</li>)}
+        {this.state.plants.map(plant => 
+          <li>
+            <img src={plant.image} alt={plant.type}/>
+            <h2>{plant.name}</h2>
+            <h3>{plant.type}</h3>
+            <p>Water Frequency: {plant.waterFrequency}</p>
+          </li>)}
       </ul>
     );
   }

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const db = require('./db');
 const Sequelize = require('sequelize');
+const Plant = require("./models").Plant;
 
 app.set('port', (process.env.PORT || 3001));
 
@@ -20,22 +21,18 @@ db
 
 app.get('/api/plants', (req,res) => {
   Plant.findAll().then(plants => {
-    console.log(plants)
-    res.send(plants)
-    // res.json({
-    //   plants: "I got plants"
-    // });
-  })
+    res.json(plants);
+  });
 });
 
-const Plant = db.define('plant', {
-  plantName: {
-    type: Sequelize.STRING
-  },
-  plantType: {
-    type: Sequelize.STRING
-  }
-});
+// const Plant = db.define('plant', {
+//   plantName: {
+//     type: Sequelize.STRING
+//   },
+//   plantType: {
+//     type: Sequelize.STRING
+//   }
+// });
 
 // force: true will drop the table if it already exists
 // Plant.sync({force: true}).then(() => {
