@@ -19,30 +19,30 @@ db
     console.error('Unable to connect to the database:', err);
   });
 
+app.use(express.json());
+
 app.get('/api/plants', (req,res) => {
   Plant.findAll().then(plants => {
     res.json(plants);
   });
 });
 
-// const Plant = db.define('plant', {
-//   plantName: {
-//     type: Sequelize.STRING
-//   },
-//   plantType: {
-//     type: Sequelize.STRING
-//   }
-// });
+app.post('/api/plants', (req,res) => {
+  const plant = {
+    name: req.body.name, 
+    type: req.body.type,
+    waterFrequency: req.body.waterFrequency || 7,
+    lastWatered: req.body.lastWatered || 0, 
+    meter: 4,
+    image: req.body.image
+  }
 
-// force: true will drop the table if it already exists
-// Plant.sync({force: true}).then(() => {
-//   //Table created
-//   return Plant.create({
-//     plantName: 'Beauregard',
-//     plantType: 'Golden Pothos'
-//   });
-// });
-
+  Plant
+    .create(plant)
+    .then(() => {
+      res.status(201).json(plant);
+    });
+});
 
 
 app.listen(app.get('port'), () => {
