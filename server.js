@@ -69,5 +69,7 @@ app.listen(app.get('port'), () => {
 });
 
 //TODO 
-// Form submit errors first time 
-// Image uploader doesn't work 
+// File structure clean up 
+// CSS, front end looks like crap
+// uploading to CDN 
+// Water meter 

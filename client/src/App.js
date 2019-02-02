@@ -40,16 +40,22 @@ class App extends Component {
 
   handleUpload = (event) => {
     event.preventDefault();
-    
-    this.setState({
-      newPlant: {
-        name: event.target[0].value, 
-        type: event.target[1].value,
-        waterFrequency: event.target[2].value, 
-        lastWatered: event.target[3].value
-      }
-    });
-    postNewPlant(this.state.newPlant);
+
+    const formData = new FormData(); 
+    formData.append("name", event.target[0].value);
+    formData.append("type", event.target[1].value);
+    formData.append("avatar", this.state.image); 
+    formData.append("waterFrequency", event.target[2].value);
+    formData.append("lastWatered", event.target[3].value);
+
+
+    fetch(`/api/plants`, {
+      method: "POST", 
+      mode: "cors",
+      body: formData
+    })
+    .then(response => console.log(response))
+    .catch(err => console.log(err));
   }
   componentDidMount(){
     get().then(result => this.setState({plants: result}));
@@ -61,7 +67,7 @@ class App extends Component {
         <ul>
           {this.state.plants.map(plant => 
             <li key={plant.id}>
-              <img src={plant.image} alt={plant.type}/>
+                <img src={plant.image} alt={plant.type}/>
               <h2>{plant.name}</h2>
               <h3>{plant.type}</h3>
               <p>Water Frequency: {plant.waterFrequency}</p>
@@ -72,7 +78,7 @@ class App extends Component {
           Type: <input type="text" name="plantType"/>
           Water Frequency: <input type="text" name="waterFrequency"/>
           Last Watered: <input type="text" name="lastWatered"/>
-          <input type="file" name="photo" onChange={this.handleSelectedFile} />
+          <input type="file" name="avatar" onChange={this.handleSelectedFile} />
           <button type="submit">Submit</button>
         </form>
       </div>
