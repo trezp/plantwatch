@@ -70,6 +70,7 @@ app.listen(app.get('port'), () => {
 
 //TODO 
 // File structure clean up 
+// image uploader constraints
 // CSS, front end looks like crap
 // uploading to CDN 
 // Water meter 
