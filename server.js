@@ -1,8 +1,12 @@
 const express = require('express');
-const app = express();
 const db = require('./db');
 const Sequelize = require('sequelize');
 const Plant = require("./models").Plant;
+const multer = require('multer');
+const upload = multer({ dest: '/client/public/uploads/'});
+
+const app = express();
+app.use(express.json());
 
 app.set('port', (process.env.PORT || 3001));
 
@@ -34,9 +38,10 @@ app.post('/api/plants', (req,res) => {
     waterFrequency: req.body.waterFrequency || 7,
     lastWatered: req.body.lastWatered || 0, 
     meter: 4,
-    image: req.body.image
+    image: req.file
   }
 
+  console.log(plant)
   Plant
     .create(plant)
     .then(() => {
@@ -44,7 +49,10 @@ app.post('/api/plants', (req,res) => {
     });
 });
 
-
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
 });
+
+//TODO 
+// Form submit errors first time 
+// Image uploader doesn't work 
