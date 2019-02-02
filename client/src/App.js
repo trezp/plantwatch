@@ -61,7 +61,7 @@ class App extends Component {
         <ul>
           {this.state.plants.map(plant => 
             <li key={plant.id}>
-              {/* <img src={plant.image} alt={plant.type}/> */}
+              <img src={plant.image} alt={plant.type}/>
               <h2>{plant.name}</h2>
               <h3>{plant.type}</h3>
               <p>Water Frequency: {plant.waterFrequency}</p>
