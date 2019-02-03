@@ -26,3 +26,16 @@ code {
 form input {
   display: block;
 }
+
+.plant-gallery {
+  display: flex; 
+  justify-content: center;
+}
+
+.plant {
+  padding: 15px;
+}
+.plant img {
+  max-width: 100%;
+  max-height: 250px;
+}

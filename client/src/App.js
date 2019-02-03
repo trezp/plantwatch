@@ -63,17 +63,17 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <ul>
+      <div className="container">
+        <ul className="plant-gallery">
           {this.state.plants.map(plant => 
-            <li key={plant.id}>
+            <li key={plant.id} className="plant">
                 <img src={plant.image} alt={plant.type}/>
               <h2>{plant.name}</h2>
               <h3>{plant.type}</h3>
               <p>Water Frequency: {plant.waterFrequency}</p>
             </li>)}
         </ul>
-        <form action="/api/plants" method="post" onSubmit={this.handleUpload} encType="multipart/form-data">
+        <form className="add-plant" action="/api/plants" method="post" onSubmit={this.handleUpload} encType="multipart/form-data">
           Name:<input type="text" name="name"/>
           Type: <input type="text" name="plantType"/>
           Water Frequency: <input type="text" name="waterFrequency"/>
