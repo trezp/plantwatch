@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Plants from './components/Plants/Plants';
 
 
 function get() {
@@ -64,15 +65,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <ul className="plant-gallery columns">
-          {this.state.plants.map(plant => 
-            <li key={plant.id} className="plant column">
-                <img src={plant.image} alt={plant.type}/>
-              <h2>{plant.name}</h2>
-              <h3>{plant.type}</h3>
-              <p>Water Frequency: {plant.waterFrequency}</p>
-            </li>)}
-        </ul>
+        <Plants plants={this.state.plants}/>
         <form className="add-plant control" action="/api/plants" method="post" onSubmit={this.handleUpload} encType="multipart/form-data">
           Name:<input className="input" type="text" name="name"/>
           Type: <input className="input" type="text" name="plantType"/>
