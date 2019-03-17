@@ -64,22 +64,22 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <ul className="plant-gallery">
+        <ul className="plant-gallery columns">
           {this.state.plants.map(plant => 
-            <li key={plant.id} className="plant">
+            <li key={plant.id} className="plant column">
                 <img src={plant.image} alt={plant.type}/>
               <h2>{plant.name}</h2>
               <h3>{plant.type}</h3>
               <p>Water Frequency: {plant.waterFrequency}</p>
             </li>)}
         </ul>
-        <form className="add-plant" action="/api/plants" method="post" onSubmit={this.handleUpload} encType="multipart/form-data">
-          Name:<input type="text" name="name"/>
-          Type: <input type="text" name="plantType"/>
-          Water Frequency: <input type="text" name="waterFrequency"/>
-          Last Watered: <input type="text" name="lastWatered"/>
+        <form className="add-plant control" action="/api/plants" method="post" onSubmit={this.handleUpload} encType="multipart/form-data">
+          Name:<input className="input" type="text" name="name"/>
+          Type: <input className="input" type="text" name="plantType"/>
+          Water Frequency: <input className="input" type="text" name="waterFrequency"/>
+          Last Watered: <input className="input" type="text" name="lastWatered"/>
           <input type="file" name="avatar" onChange={this.handleSelectedFile} />
-          <button type="submit">Submit</button>
+          <button className="button is-primary" type="submit">Submit</button>
         </form>
       </div>
     );

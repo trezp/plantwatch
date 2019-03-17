@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -8,34 +9,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.container {
+  padding: 3%;
+}
+ 
 div {
   max-width: 900px; 
   margin: auto;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-form input {
-  display: block;
-}
-
-.plant-gallery {
-  display: flex; 
-  justify-content: center;
-}
-
-.plant {
-  padding: 15px;
-}
-.plant img {
-  max-width: 100%;
-  max-height: 250px;
 }
