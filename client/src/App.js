@@ -1,24 +1,11 @@
 import React, { Component } from 'react';
 import Plants from './components/Plants/Plants';
+import AddPlant from './components/AddPlant/AddPlant';
 
 
 function get() {
   return fetch(`/api/plants`, {
     accept: "application/json"
-  })
-  .then(response => response.json())
-  .catch(err => console.log(err));
-}
-
-function postNewPlant(data){
-  return fetch(`/api/plants`, {
-    method: "POST", 
-    mode: "cors",
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
   })
   .then(response => response.json())
   .catch(err => console.log(err));
@@ -49,7 +36,6 @@ class App extends Component {
     formData.append("waterFrequency", event.target[2].value);
     formData.append("lastWatered", event.target[3].value);
 
-
     fetch(`/api/plants`, {
       method: "POST", 
       mode: "cors",
@@ -66,14 +52,7 @@ class App extends Component {
     return (
       <div className="container">
         <Plants plants={this.state.plants}/>
-        <form className="add-plant control" action="/api/plants" method="post" onSubmit={this.handleUpload} encType="multipart/form-data">
-          Name:<input className="input" type="text" name="name"/>
-          Type: <input className="input" type="text" name="plantType"/>
-          Water Frequency: <input className="input" type="text" name="waterFrequency"/>
-          Last Watered: <input className="input" type="text" name="lastWatered"/>
-          <input type="file" name="avatar" onChange={this.handleSelectedFile} />
-          <button className="button is-primary" type="submit">Submit</button>
-        </form>
+        <AddPlant handleUpload={this.handleUpload} handleSelectedFile={this.handleSelectedFile}/>
       </div>
     );
   }
