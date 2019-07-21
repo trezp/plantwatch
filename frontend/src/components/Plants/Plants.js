@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class Plants extends Component {
   render(){
     return (
-      <ul className="plant-gallery columns">
+      <ul className="plant-gallery columns is-multiline">
         {this.props.plants.map(plant => 
-          <li key={plant.id} className="plant column">
+          <li key={plant.id} className="plant column is-one-third">
               <img src={plant.image} alt={plant.type}/>
             <h2>{plant.name}</h2>
             <h3>{plant.type}</h3>

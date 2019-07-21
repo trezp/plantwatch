@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Plants from './components/Plants/Plants';
 import AddPlant from './components/AddPlant/AddPlant';
+import Header from './components/Header/Header'
 
 
 function get() {
@@ -51,7 +52,9 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <Header title="PlantSitter"></Header>
         <Plants plants={this.state.plants}/>
+        <Header title="Add a New Plant"></Header>
         <AddPlant handleUpload={this.handleUpload} handleSelectedFile={this.handleSelectedFile}/>
       </div>
     );

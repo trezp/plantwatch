@@ -68,9 +68,3 @@ app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
 });
 
-//TODO 
-// File structure clean up 
-// image uploader constraints
-// CSS, front end looks like crap
-// uploading to CDN 
-// Water meter 
