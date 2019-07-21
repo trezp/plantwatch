@@ -10,8 +10,6 @@ const sequelize = new Sequelize('plantwatch', null, null, {
     idle: 10000
   },
 
-  // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
-  operatorsAliases: false
 });
 
 module.exports = sequelize;
